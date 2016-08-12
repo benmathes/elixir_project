@@ -9,6 +9,12 @@ defmodule Store.Shopping do
     # supervised is our app. This is a spec,
     # not actually starting up the process.
     start_session_supervisor
+    start_database
+  end
+
+  def start_database do
+    db_worker = worker(Store.Shopping.DB [ database: "elixir_otp_exercise"])
+    Supervisor.start_link([db_worker], strategy: :one_for_one)
   end
 
   # where is our parent supervisor?

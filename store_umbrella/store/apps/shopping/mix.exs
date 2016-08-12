@@ -19,7 +19,7 @@ defmodule Store.Shopping.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [
-      applications: [:logger],
+      applications: [:logger :moebius],
       mod: {Store.Shopping, []}
     ]
   end
@@ -38,6 +38,10 @@ defmodule Store.Shopping.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      # the blog author (robonery on github) wrote this postgres wrapper
+      # ideally we'd use standard, but just playing along with the guide
+      {:moebius, github: "robconery/moebius", branch: "master"}
+    ]
   end
 end
